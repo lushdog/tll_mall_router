@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>添加商品</h1>
+    <p>价格<input type="text" id="price"></p>
+    <p>地区<input type="text" id="pala"></p>
+    <p>标题<input type="text" id="tit"></p>
+    <p>图片<input type="text" id="pic"></p>
+    <p>原价<input type="text" id="price2"></p>
+    <button id="add">添加</button>
+</body>
+<script type="text/javascript">
+    $(function(){
+
+        $('#add').click(function(event) {
+            $.post('/mshop/addItem',
+            {
+                price: $("#price").val(),
+                markprice: $("#price2").val(),
+                palace: $("#pala").val(),
+                pic: $("#pic").val(),
+                tit: $("#tit").val(),
+
+            },
+            function(data, textStatus, xhr) {
+                alert('success')
+            });
+        });
+
+    })
+</script>
+</html>
